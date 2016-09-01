@@ -3,6 +3,8 @@ AppMate
 
 Appmate is your friend.
 
+Python support: 3.4 and 3.5
+
 
 Quick Start
 ----------------------------------------------------------------------
