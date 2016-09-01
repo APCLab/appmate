@@ -11,6 +11,9 @@ class Sample(models.Model):
     email = models.EmailField(blank=True, null=True)
     index = models.IntegerField(blank=True, null=True)
 
+    def __str__(self):
+        return 'Sample id: {}'.format(self.id)
+
 
 SAMPLE_FIELDS = (
     'id',
