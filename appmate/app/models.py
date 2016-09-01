@@ -10,3 +10,15 @@ class Sample(models.Model):
     checked = models.BooleanField(blank=True)
     email = models.EmailField(blank=True, null=True)
     index = models.IntegerField(blank=True, null=True)
+
+
+SAMPLE_FIELDS = (
+    'id',
+    'name',
+    'msg',
+    'date',
+    'timestamp',
+    'img',
+    'checked',
+    'email',
+    'index')

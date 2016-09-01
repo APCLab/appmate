@@ -1,11 +1,9 @@
 from rest_framework import serializers
 
-from app.models import Sample
+from app.models import Sample, SAMPLE_FIELDS
 
 
 class SampleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Sample
-        fields = (
-            'id', 'name', 'msg', 'date', 'timestamp', 'img', 'checked', 'email',
-            'index')
+        fields = SAMPLE_FIELDS
