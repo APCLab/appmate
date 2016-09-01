@@ -59,5 +59,5 @@ Add a New Model
 
 #. Do the database migration::
 
-   python manage.py makemigrations app
-   python manage.py migrate app
+    python manage.py makemigrations app
+    python manage.py migrate app
