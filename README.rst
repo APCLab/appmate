@@ -34,7 +34,7 @@ Activate Model
     python manage.py migrate app
 
 
-Run
+Run the Development Server
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ::
