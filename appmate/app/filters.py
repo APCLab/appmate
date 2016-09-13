@@ -14,13 +14,13 @@ def fields_filter(model, fields):
 
     - ['gt', 'lt'] for ``IntegerField``
     '''
-    int_type = ('AutoField', 'IntegerField')
+    num_type = ('AutoField', 'IntegerField', 'FloatField')
     ret = {}
 
     for field in fields:
         ret[field] = ('exact',)
 
-        if model._meta.get_field(field).get_internal_type() in int_type:
+        if model._meta.get_field(field).get_internal_type() in num_type:
             ret[field] += ('gt', 'lt', 'gte', 'lte')
 
     return ret
