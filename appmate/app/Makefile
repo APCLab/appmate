@@ -7,3 +7,5 @@ all:
 	${YASHA} admin.py.jinja
 	${YASHA} filters.py.jinja
 	${YASHA} serializers.py.jinja
+	${YASHA} views.py.jinja
+	${YASHA} routers.py.jinja

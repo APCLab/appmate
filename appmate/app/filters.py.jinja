@@ -4,6 +4,12 @@ from rest_framework.filters import FilterSet
 
 from app.models import *
 
+__all__ = (
+    {% for model in models %}
+    '{{ model.name }}Filter',
+    {% endfor %}
+)
+
 
 def fields_filter(model, fields):
     '''

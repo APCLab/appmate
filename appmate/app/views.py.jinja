@@ -1,0 +1,22 @@
+from django.shortcuts import render
+
+from rest_framework import filters, viewsets
+
+from app.filters import *
+from app.models import *
+from app.serializers import *
+
+__all__ = (
+    {% for model in models %}
+    '{{ model.name }}ViewSet',
+    {% endfor %}
+)
+{% for model in models %}
+
+
+class {{ model.name }}ViewSet(viewsets.ModelViewSet):
+    queryset = Sample.objects.all()
+    serializer_class = {{ model.name }}Serializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = {{ model.name }}Filter
+{% endfor %}

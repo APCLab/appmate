@@ -16,14 +16,9 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from rest_framework import routers
-
-from app.views import SampleViewSet
-
-router = routers.DefaultRouter()
-router.register(r'sample', SampleViewSet)
+from app.routers import router as app_router
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include(router.urls)),
+    url(r'^api/', include(app_router.urls)),
 ]

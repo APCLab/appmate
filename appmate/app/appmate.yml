@@ -13,6 +13,7 @@ field_arg:
 
 models:
     - name: Sample
+      endpoint: sample
       fields:
           - name: name
             type: CharField
@@ -32,6 +33,7 @@ models:
             type: IntegerField
 
     - name: Demo
+      endpoint: demo
       fields:
           - name: name
             type: IntegerField

@@ -1,0 +1,8 @@
+from rest_framework import routers
+
+from app.views import *
+
+router = routers.DefaultRouter()
+{% for model in models %}
+router.register(r'{{ model.endpoint }}', {{ model.name }}ViewSet)
+{% endfor %}
