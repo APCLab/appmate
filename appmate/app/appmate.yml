@@ -10,6 +10,7 @@ field_arg:
     BooleanField: "blank=True"
     EmailField: "blank=True, null=True"
     IntegerField: "blank=True, null=True"
+    FloatField: "blank=True, null=True"
 
 
 models:
