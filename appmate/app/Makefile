@@ -1,3 +1,8 @@
+
+YASHA=	yasha --no-extensions -v appmate.yml 
+
+
 all:
-	yasha --no-extensions -v appmate.yml \
-	    models.py.jinja
+	${YASHA} models.py.jinja
+	${YASHA} admin.py.jinja
+
