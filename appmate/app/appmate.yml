@@ -1,1 +1,36 @@
-class_name: Sample
+field_arg:
+    IntegerField: "max_length=255, blank=True, null=True"
+    TextField: "blank=True, null=True"
+    DateField: "blank=True, null=True, auto_now_add=True"
+    DateTimeField: "blank=True, null=True, auto_now_add=True"
+    TimeField: "blank=True, null=True, auto_now_add=True"
+    ImageField: "blank=True, null=True"
+    BooleanField: "blank=True"
+    EmailField: "blank=True, null=True"
+    IntegerField: "blank=True, null=True"
+
+
+models:
+    - name: Sample
+      fields:
+          - name: name
+            type: CharField
+          - name: msg
+            type: TextField
+          - name: date
+            type: DateField
+          - name: timestamp
+            type: DateTimeField
+          - name: img
+            type: ImageField
+          - name: checked
+            type: BooleanField
+          - name: email
+            type: EmailField
+          - name: index
+            type: IntegerField
+
+    - name: Demo
+      fields:
+          - name: name
+            type: IntegerField

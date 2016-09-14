@@ -1,27 +1,21 @@
 from django.db import models
 
-
-class {{ Sample }}(models.Model):
-    name = models.CharField(max_length=30, blank=True, null=True)
-    msg = models.TextField(blank=True, null=True)
-    date = models.DateField(blank=True, null=True, auto_now=True)
-    timestamp = models.DateTimeField(blank=True, null=True, auto_now=True)
-    img = models.ImageField(blank=True, null=True)
-    checked = models.BooleanField(blank=True)
-    email = models.EmailField(blank=True, null=True)
-    index = models.IntegerField(blank=True, null=True)
-
-    def __str__(self):
-        return 'Sample id: {}'.format(self.id)
+__all__ = (
+    {% for model in models %}
+    '{{ model.name }}',
+    {% endfor %}
+)
 
 
-SAMPLE_FIELDS = (
-    'id',
-    'name',
-    'msg',
-    'date',
-    'timestamp',
-    'img',
-    'checked',
-    'email',
-    'index')
+class _UtilMixin(object):
+    @classmethod
+    def _fields(cls):
+        return tuple(f.name for f in cls._meta.fields)
+{% for model in models %}
+
+
+class {{ model.name }}(_UtilMixin, models.Model):
+    {% for field in model.fields %}
+    {{ field.name }} = models.{{ field.type }}({{ field_arg[field.type] }})
+    {% endfor %}
+{% endfor %}
