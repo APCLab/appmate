@@ -1,5 +1,6 @@
 field_arg:
-    IntegerField: "max_length=255, blank=True, null=True"
+    IntegerField: "blank=True, null=True" 
+    CharField: "max_length=255, blank=True, null=True"
     TextField: "blank=True, null=True"
     DateField: "blank=True, null=True, auto_now_add=True"
     DateTimeField: "blank=True, null=True, auto_now_add=True"
