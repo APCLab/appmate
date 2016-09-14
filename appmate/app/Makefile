@@ -6,3 +6,4 @@ all:
 	${YASHA} models.py.jinja
 	${YASHA} admin.py.jinja
 	${YASHA} filters.py.jinja
+	${YASHA} serializers.py.jinja
