@@ -13,7 +13,7 @@ class _UtilMixin(object):
 
 
 class Sample(_UtilMixin, models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
+    name = models.CharField(max_length=42)
     msg = models.TextField(blank=True, null=True)
     date = models.DateField(blank=True, null=True, auto_now_add=True)
     timestamp = models.DateTimeField(blank=True, null=True, auto_now_add=True)

@@ -16,6 +16,6 @@ class _UtilMixin(object):
 
 class {{ model.name }}(_UtilMixin, models.Model):
     {% for field in model.fields %}
-    {{ field.name }} = models.{{ field.type }}({{ field_arg[field.type] }})
+    {{ field.name }} = models.{{ field.type }}({{ field.args | default(field_arg[field.type]) }})
     {% endfor %}
 {% endfor %}

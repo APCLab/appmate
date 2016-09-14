@@ -1,5 +1,6 @@
 field_arg:
-    IntegerField: "blank=True, null=True" 
+    IntegerField: "blank=True, null=True"
+    ForeignKey: "null=True"
     CharField: "max_length=255, blank=True, null=True"
     TextField: "blank=True, null=True"
     DateField: "blank=True, null=True, auto_now_add=True"
@@ -17,6 +18,7 @@ models:
       fields:
           - name: name
             type: CharField
+            args: max_length=42
           - name: msg
             type: TextField
           - name: date
