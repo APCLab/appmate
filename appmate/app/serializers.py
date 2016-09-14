@@ -3,18 +3,32 @@ from rest_framework import serializers
 from app.models import *
 
 __all__ = (
-    'SampleSerializer',
-    'DemoSerializer',
+    'UserSerializer',
+    'ConcertInfoSerializer',
+    'ConcertBidSerializer',
+    'TicketSerializer',
 )
 
 
-class SampleSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Sample
-        fields = Sample._fields()
+        model = User
+        fields = User._fields()
 
 
-class DemoSerializer(serializers.HyperlinkedModelSerializer):
+class ConcertInfoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Demo
-        fields = Demo._fields()
+        model = ConcertInfo
+        fields = ConcertInfo._fields()
+
+
+class ConcertBidSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = ConcertBid
+        fields = ConcertBid._fields()
+
+
+class TicketSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Ticket
+        fields = Ticket._fields()

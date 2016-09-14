@@ -14,29 +14,79 @@ field_arg:
 
 
 models:
-    - name: Sample
-      endpoint: sample
+    - name: User
+      endpoint: user
+      fields:
+          - name: iemi
+            type: CharField
+          - name: tel
+            type: CharField
+
+    - name: ConcertInfo
+      endpoint: concert_info
       fields:
           - name: name
             type: CharField
-            args: max_length=42
-          - name: msg
-            type: TextField
           - name: date
-            type: DateField
-          - name: timestamp
             type: DateTimeField
-          - name: img
-            type: ImageField
-          - name: checked
-            type: BooleanField
-          - name: email
-            type: EmailField
-          - name: index
+            args: ""
+          - name: location
+            type: CharField
+
+    - name: ConcertBid
+      endpoint: concert_bid
+      fields:
+          - name: user
+            type: ForeignKey
+            args: "'User'"
+
+          - name: rank
+            type: CharField
+
+          - name: a_price
+            type: FloatField
+
+          - name: b_price
+            type: FloatField
+
+          - name: c_price
+            type: FloatField
+
+          - name: d_price
+            type: FloatField
+
+          - name: e_price
+            type: FloatField
+
+          - name: qty
             type: IntegerField
 
-    - name: Demo
-      endpoint: demo
+          - name: time
+            type: DateTimeField
+
+    - name: Ticket
+      endpoint: ticket
       fields:
-          - name: name
-            type: IntegerField
+          - name: concert_info
+            type: ForeignKey
+            args: "'ConcertInfo'"
+
+          - name: region
+            type: CharField
+
+          - name: price
+            type: FloatField
+
+          - name: token
+            type: CharField
+
+          - name: state
+            type: CharField
+
+          - name: time
+            type: DateTimeField
+            args: "blank=True, auto_now=True"
+
+          - name: user
+            type: ForeignKey
+            args: "'User', null=True, blank=True"

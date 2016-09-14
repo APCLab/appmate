@@ -7,20 +7,36 @@ from app.models import *
 from app.serializers import *
 
 __all__ = (
-    'SampleViewSet',
-    'DemoViewSet',
+    'UserViewSet',
+    'ConcertInfoViewSet',
+    'ConcertBidViewSet',
+    'TicketViewSet',
 )
 
 
-class SampleViewSet(viewsets.ModelViewSet):
-    queryset = Sample.objects.all()
-    serializer_class = SampleSerializer
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filter_class = SampleFilter
+    filter_class = UserFilter
 
 
-class DemoViewSet(viewsets.ModelViewSet):
-    queryset = Demo.objects.all()
-    serializer_class = DemoSerializer
+class ConcertInfoViewSet(viewsets.ModelViewSet):
+    queryset = ConcertInfo.objects.all()
+    serializer_class = ConcertInfoSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filter_class = DemoFilter
+    filter_class = ConcertInfoFilter
+
+
+class ConcertBidViewSet(viewsets.ModelViewSet):
+    queryset = ConcertBid.objects.all()
+    serializer_class = ConcertBidSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = ConcertBidFilter
+
+
+class TicketViewSet(viewsets.ModelViewSet):
+    queryset = Ticket.objects.all()
+    serializer_class = TicketSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = TicketFilter

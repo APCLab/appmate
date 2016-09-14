@@ -5,8 +5,10 @@ from rest_framework.filters import FilterSet
 from app.models import *
 
 __all__ = (
-    'SampleFilter',
-    'DemoFilter',
+    'UserFilter',
+    'ConcertInfoFilter',
+    'ConcertBidFilter',
+    'TicketFilter',
 )
 
 
@@ -32,13 +34,25 @@ def fields_filter(model, fields):
     return ret
 
 
-class SampleFilter(FilterSet):
+class UserFilter(FilterSet):
     class Meta:
-        model = Sample
+        model = User
         fields = fields_filter(model, model._fields())
 
 
-class DemoFilter(FilterSet):
+class ConcertInfoFilter(FilterSet):
     class Meta:
-        model = Demo
+        model = ConcertInfo
+        fields = fields_filter(model, model._fields())
+
+
+class ConcertBidFilter(FilterSet):
+    class Meta:
+        model = ConcertBid
+        fields = fields_filter(model, model._fields())
+
+
+class TicketFilter(FilterSet):
+    class Meta:
+        model = Ticket
         fields = fields_filter(model, model._fields())
