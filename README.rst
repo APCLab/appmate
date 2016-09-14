@@ -49,15 +49,11 @@ And, enjoy!
 Add a New Model
 ----------------------------------------------------------------------
 
-#. Define your model(s) in ``app/models.py``.
+#. Define your model(s) in ``app/appmate.yml``.
 
-#. Enable them in admin panel: ``app/admin.py``.
+#. Compile the Jinja templates::
 
-#. Create a serializer for rest framework in ``app/serializers.py``.
-
-#. Show them in views: ``app/views.py``.
-
-#. Register to rest framework router in ``core/urls.py``.
+    (cd app && make)
 
 #. Do the database migration::
 
