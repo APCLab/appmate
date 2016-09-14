@@ -15,7 +15,7 @@ __all__ = (
 
 
 class {{ model.name }}ViewSet(viewsets.ModelViewSet):
-    queryset = Sample.objects.all()
+    queryset = {{ model.name }}.objects.all()
     serializer_class = {{ model.name }}Serializer
     filter_backends = (filters.DjangoFilterBackend,)
     filter_class = {{ model.name }}Filter
