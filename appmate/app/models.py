@@ -27,7 +27,12 @@ class ConcertInfo(_UtilMixin, models.Model):
 
 class ConcertBid(_UtilMixin, models.Model):
     user = models.ForeignKey('User')
-    rank = models.CharField(max_length=255, blank=True, null=True)
+    concert_info = models.ForeignKey('ConcertInfo')
+    a_rank = models.CharField(max_length=255, blank=True, null=True)
+    b_rank = models.CharField(max_length=255, blank=True, null=True)
+    c_rank = models.CharField(max_length=255, blank=True, null=True)
+    d_rank = models.CharField(max_length=255, blank=True, null=True)
+    e_rank = models.CharField(max_length=255, blank=True, null=True)
     a_price = models.FloatField(blank=True, null=True)
     b_price = models.FloatField(blank=True, null=True)
     c_price = models.FloatField(blank=True, null=True)
@@ -43,5 +48,5 @@ class Ticket(_UtilMixin, models.Model):
     price = models.FloatField(blank=True, null=True)
     token = models.CharField(max_length=255, blank=True, null=True)
     state = models.CharField(max_length=255, blank=True, null=True)
-    time = models.DateTimeField(blank=True, auto_now=True)
-    user = models.ForeignKey('User', null=True, blank=True)
+    time = models.DateTimeField(blank=True, null=True, auto_now_add=True)
+    user = models.ForeignKey('User')

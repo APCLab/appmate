@@ -40,7 +40,23 @@ models:
             type: ForeignKey
             args: "'User'"
 
-          - name: rank
+          - name: concert_info
+            type: ForeignKey
+            args: "'ConcertInfo'"
+
+          - name: a_rank
+            type: CharField
+
+          - name: b_rank
+            type: CharField
+
+          - name: c_rank
+            type: CharField
+
+          - name: d_rank
+            type: CharField
+
+          - name: e_rank
             type: CharField
 
           - name: a_price
@@ -85,8 +101,7 @@ models:
 
           - name: time
             type: DateTimeField
-            args: "blank=True, auto_now=True"
 
           - name: user
             type: ForeignKey
-            args: "'User', null=True, blank=True"
+            args: "'User'"
