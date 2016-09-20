@@ -14,29 +14,102 @@ field_arg:
 
 
 models:
-    - name: Sample
-      endpoint: sample
+    - name: Track
+      endpoint: track
       fields:
-          - name: name
-            type: CharField
-            args: max_length=42
-          - name: msg
-            type: TextField
-          - name: date
-            type: DateField
-          - name: timestamp
+          - name: longitude
+            type: FloatField
+          - name: latitude
+            type: FloatField
+          - name: time
             type: DateTimeField
-          - name: img
-            type: ImageField
-          - name: checked
-            type: BooleanField
-          - name: email
-            type: EmailField
-          - name: index
+          - name: plate
+            type: CharField
+          - name: queue_list
+            type: ForeignKey
+            args: "'QueueList'"
+
+    - name: Vehicle
+      endpoint: vehicle
+      fields:
+          - name: driver
+            type: ForeignKey
+            args: "'Driver'"
+          - name: longitude
+            type: FloatField
+          - name: latitude
+            type: FloatField
+          - name: time
+            type: DateTimeField
+            args: "auto_now=True"
+
+    - name: QueueList
+      endpoint: queue_list
+      fields:
+          - name: model
+            type: IntegerField
+          - name: time
+            type: DateTimeField
+            args: "null=True"
+          - name: slongitude
+            type: FloatField
+          - name: slatitude
+            type: FloatField
+          - name: price
+            type: FloatField
+          - name: dlongitude
+            type: FloatField
+          - name: dlatitude
+            type: FloatField
+          - name: time
+            type: DateTimeField
+          - name: customer
+            type: ForeignKey
+            args: "'Customer'"
+          - name: state
             type: IntegerField
 
-    - name: Demo
-      endpoint: demo
+    - name: Evaluation
+      endpoint: evaluation
       fields:
-          - name: name
+          - name: queue_list
+            type: ForeignKey
+            args: "'QueueList'"
+          - name: score
             type: IntegerField
+          - name: time
+            type: DateTimeField
+
+    - name: Customer
+      endpoint: customer
+      fields:
+          - name: imei
+            type: CharField
+          - name: name
+            type: CharField
+          - name: sex
+            type: IntegerField
+          - name: phone
+            type: CharField
+          - name: card
+            type: CharField
+          - name: time
+            type: DateTimeField
+
+    - name: Driver
+      endpoint: driver
+      fields:
+          - name: imei
+            type: CharField
+          - name: name
+            type: CharField
+          - name: phone
+            type: CharField
+          - name: plate
+            type: CharField
+          - name: car_age
+            type: FloatField
+          - name: model
+            type: IntegerField
+          - name: time
+            type: DateTimeField

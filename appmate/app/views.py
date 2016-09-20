@@ -7,20 +7,52 @@ from app.models import *
 from app.serializers import *
 
 __all__ = (
-    'SampleViewSet',
-    'DemoViewSet',
+    'TrackViewSet',
+    'VehicleViewSet',
+    'QueueListViewSet',
+    'EvaluationViewSet',
+    'CustomerViewSet',
+    'DriverViewSet',
 )
 
 
-class SampleViewSet(viewsets.ModelViewSet):
-    queryset = Sample.objects.all()
-    serializer_class = SampleSerializer
+class TrackViewSet(viewsets.ModelViewSet):
+    queryset = Track.objects.all()
+    serializer_class = TrackSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filter_class = SampleFilter
+    filter_class = TrackFilter
 
 
-class DemoViewSet(viewsets.ModelViewSet):
-    queryset = Demo.objects.all()
-    serializer_class = DemoSerializer
+class VehicleViewSet(viewsets.ModelViewSet):
+    queryset = Vehicle.objects.all()
+    serializer_class = VehicleSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filter_class = DemoFilter
+    filter_class = VehicleFilter
+
+
+class QueueListViewSet(viewsets.ModelViewSet):
+    queryset = QueueList.objects.all()
+    serializer_class = QueueListSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = QueueListFilter
+
+
+class EvaluationViewSet(viewsets.ModelViewSet):
+    queryset = Evaluation.objects.all()
+    serializer_class = EvaluationSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = EvaluationFilter
+
+
+class CustomerViewSet(viewsets.ModelViewSet):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = CustomerFilter
+
+
+class DriverViewSet(viewsets.ModelViewSet):
+    queryset = Driver.objects.all()
+    serializer_class = DriverSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = DriverFilter

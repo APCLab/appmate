@@ -3,18 +3,46 @@ from rest_framework import serializers
 from app.models import *
 
 __all__ = (
-    'SampleSerializer',
-    'DemoSerializer',
+    'TrackSerializer',
+    'VehicleSerializer',
+    'QueueListSerializer',
+    'EvaluationSerializer',
+    'CustomerSerializer',
+    'DriverSerializer',
 )
 
 
-class SampleSerializer(serializers.HyperlinkedModelSerializer):
+class TrackSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Sample
-        fields = Sample._fields()
+        model = Track
+        fields = Track._fields()
 
 
-class DemoSerializer(serializers.HyperlinkedModelSerializer):
+class VehicleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Demo
-        fields = Demo._fields()
+        model = Vehicle
+        fields = Vehicle._fields()
+
+
+class QueueListSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = QueueList
+        fields = QueueList._fields()
+
+
+class EvaluationSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Evaluation
+        fields = Evaluation._fields()
+
+
+class CustomerSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Customer
+        fields = Customer._fields()
+
+
+class DriverSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Driver
+        fields = Driver._fields()

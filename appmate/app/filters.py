@@ -5,8 +5,12 @@ from rest_framework.filters import FilterSet
 from app.models import *
 
 __all__ = (
-    'SampleFilter',
-    'DemoFilter',
+    'TrackFilter',
+    'VehicleFilter',
+    'QueueListFilter',
+    'EvaluationFilter',
+    'CustomerFilter',
+    'DriverFilter',
 )
 
 
@@ -32,13 +36,37 @@ def fields_filter(model, fields):
     return ret
 
 
-class SampleFilter(FilterSet):
+class TrackFilter(FilterSet):
     class Meta:
-        model = Sample
+        model = Track
         fields = fields_filter(model, model._fields())
 
 
-class DemoFilter(FilterSet):
+class VehicleFilter(FilterSet):
     class Meta:
-        model = Demo
+        model = Vehicle
+        fields = fields_filter(model, model._fields())
+
+
+class QueueListFilter(FilterSet):
+    class Meta:
+        model = QueueList
+        fields = fields_filter(model, model._fields())
+
+
+class EvaluationFilter(FilterSet):
+    class Meta:
+        model = Evaluation
+        fields = fields_filter(model, model._fields())
+
+
+class CustomerFilter(FilterSet):
+    class Meta:
+        model = Customer
+        fields = fields_filter(model, model._fields())
+
+
+class DriverFilter(FilterSet):
+    class Meta:
+        model = Driver
         fields = fields_filter(model, model._fields())
