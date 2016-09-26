@@ -27,6 +27,8 @@ models:
             type: IntegerField
           - name: credit
             type: FloatField
+          - name: icon
+            type: CharField
 
     - name: Restaurant
       endpoint: restaurant
@@ -49,6 +51,8 @@ models:
             type: FloatField
           - name: latitude
             type: FloatField
+          - name: icon
+            type: CharField
 
     - name: Rate
       endpoint: rate

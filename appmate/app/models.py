@@ -23,6 +23,7 @@ class User(_UtilMixin, models.Model):
     exp = models.FloatField(blank=True, null=True)
     bonus = models.IntegerField(blank=True, null=True)
     credit = models.FloatField(blank=True, null=True)
+    icon = models.CharField(max_length=255, blank=True, null=True)
 
 
 class Restaurant(_UtilMixin, models.Model):
@@ -35,6 +36,7 @@ class Restaurant(_UtilMixin, models.Model):
     empty_seat = models.IntegerField(blank=True, null=True)
     longtitude = models.FloatField(blank=True, null=True)
     latitude = models.FloatField(blank=True, null=True)
+    icon = models.CharField(max_length=255, blank=True, null=True)
 
 
 class Rate(_UtilMixin, models.Model):
