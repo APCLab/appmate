@@ -7,20 +7,60 @@ from app.models import *
 from app.serializers import *
 
 __all__ = (
-    'SampleViewSet',
-    'DemoViewSet',
+    'UserViewSet',
+    'RestaurantViewSet',
+    'RateViewSet',
+    'MenuViewSet',
+    'OrderViewSet',
+    'ReservationViewSet',
+    'FavoriteViewSet',
 )
 
 
-class SampleViewSet(viewsets.ModelViewSet):
-    queryset = Sample.objects.all()
-    serializer_class = SampleSerializer
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filter_class = SampleFilter
+    filter_class = UserFilter
 
 
-class DemoViewSet(viewsets.ModelViewSet):
-    queryset = Demo.objects.all()
-    serializer_class = DemoSerializer
+class RestaurantViewSet(viewsets.ModelViewSet):
+    queryset = Restaurant.objects.all()
+    serializer_class = RestaurantSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    filter_class = DemoFilter
+    filter_class = RestaurantFilter
+
+
+class RateViewSet(viewsets.ModelViewSet):
+    queryset = Rate.objects.all()
+    serializer_class = RateSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = RateFilter
+
+
+class MenuViewSet(viewsets.ModelViewSet):
+    queryset = Menu.objects.all()
+    serializer_class = MenuSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = MenuFilter
+
+
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = OrderFilter
+
+
+class ReservationViewSet(viewsets.ModelViewSet):
+    queryset = Reservation.objects.all()
+    serializer_class = ReservationSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = ReservationFilter
+
+
+class FavoriteViewSet(viewsets.ModelViewSet):
+    queryset = Favorite.objects.all()
+    serializer_class = FavoriteSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = FavoriteFilter

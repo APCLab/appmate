@@ -14,29 +14,120 @@ field_arg:
 
 
 models:
-    - name: Sample
-      endpoint: sample
+    - name: User
+      endpoint: user
       fields:
           - name: name
             type: CharField
-            args: max_length=42
-          - name: msg
-            type: TextField
-          - name: date
-            type: DateField
-          - name: timestamp
-            type: DateTimeField
-          - name: img
-            type: ImageField
-          - name: checked
-            type: BooleanField
-          - name: email
-            type: EmailField
-          - name: index
+          - name: level
             type: IntegerField
+          - name: exp
+            type: FloatField
+          - name: bonus
+            type: IntegerField
+          - name: credit
+            type: FloatField
 
-    - name: Demo
-      endpoint: demo
+    - name: Restaurant
+      endpoint: restaurant
       fields:
           - name: name
+            type: CharField
+          - name: info
+            type: TextField
+          - name: type
+            type: CharField
+          - name: address
+            type: CharField
+          - name: phone
+            type: CharField
+          - name: total_seat
             type: IntegerField
+          - name: empty_seat
+            type: IntegerField
+          - name: longtitude
+            type: FloatField
+          - name: latitude
+            type: FloatField
+
+    - name: Rate
+      endpoint: rate
+      fields:
+          - name: restaurant
+            type: ForeignKey
+            args: "'Restaurant'"
+          - name: user
+            type: ForeignKey
+            args: "'User'"
+          - name: point
+            type: IntegerField
+          - name: pub_comment
+            type: TextField
+          - name: priv_comment
+            type: TextField
+          - name: time
+            type: DateTimeField
+          - name: thumbup
+            type: IntegerField
+
+    - name: Menu
+      endpoint: menu
+      fields:
+          - name: restaurant
+            type: ForeignKey
+            args: "'Restaurant'"
+          - name: name
+            type: CharField
+          - name: info
+            type: TextField
+          - name: price
+            type: IntegerField
+          - name: count
+            type: IntegerField
+
+    - name: Order
+      endpoint: order
+      fields:
+          - name: restaurant
+            type: ForeignKey
+            args: "'Restaurant'"
+          - name: user
+            type: ForeignKey
+            args: "'User'"
+          - name: time
+            type: DateTimeField
+          - name: seat_number
+            type: IntegerField
+          - name: menu
+            type: ForeignKey
+            args: "'Menu'"
+          - name: count
+            type: IntegerField
+
+    - name: Reservation
+      endpoint: reservation
+      fields:
+          - name: user
+            type: ForeignKey
+            args: "'User'"
+          - name: seat_number
+            type: IntegerField
+          - name: time
+            type: DateTimeField
+            args: "auto_now=True"
+          - name: res_time
+            type: DateTimeField
+            args: ""
+          - name: available
+            type: BooleanField
+
+    - name: Favorite
+      endpoint: favorite
+      fields:
+          - name: user
+            type: ForeignKey
+            args: "'User'"
+          - name: restaurant
+            type: ForeignKey
+            args: "'Restaurant'"
+

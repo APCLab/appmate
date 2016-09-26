@@ -5,8 +5,13 @@ from rest_framework.filters import FilterSet
 from app.models import *
 
 __all__ = (
-    'SampleFilter',
-    'DemoFilter',
+    'UserFilter',
+    'RestaurantFilter',
+    'RateFilter',
+    'MenuFilter',
+    'OrderFilter',
+    'ReservationFilter',
+    'FavoriteFilter',
 )
 
 
@@ -32,13 +37,43 @@ def fields_filter(model, fields):
     return ret
 
 
-class SampleFilter(FilterSet):
+class UserFilter(FilterSet):
     class Meta:
-        model = Sample
+        model = User
         fields = fields_filter(model, model._fields())
 
 
-class DemoFilter(FilterSet):
+class RestaurantFilter(FilterSet):
     class Meta:
-        model = Demo
+        model = Restaurant
+        fields = fields_filter(model, model._fields())
+
+
+class RateFilter(FilterSet):
+    class Meta:
+        model = Rate
+        fields = fields_filter(model, model._fields())
+
+
+class MenuFilter(FilterSet):
+    class Meta:
+        model = Menu
+        fields = fields_filter(model, model._fields())
+
+
+class OrderFilter(FilterSet):
+    class Meta:
+        model = Order
+        fields = fields_filter(model, model._fields())
+
+
+class ReservationFilter(FilterSet):
+    class Meta:
+        model = Reservation
+        fields = fields_filter(model, model._fields())
+
+
+class FavoriteFilter(FilterSet):
+    class Meta:
+        model = Favorite
         fields = fields_filter(model, model._fields())
