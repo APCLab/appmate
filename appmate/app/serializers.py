@@ -20,9 +20,12 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class RestaurantSerializer(serializers.HyperlinkedModelSerializer):
+    avg_point = serializers.FloatField()
+
     class Meta:
         model = Restaurant
-        fields = Restaurant._fields()
+        fields = Restaurant._fields() + ('avg_point',)
+        read_only_fields = ('avg_point',)
 
 
 class RateSerializer(serializers.HyperlinkedModelSerializer):

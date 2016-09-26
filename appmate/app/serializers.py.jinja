@@ -10,8 +10,18 @@ __all__ = (
 {% for model in models %}
 
 
+{% if model.name == 'Restaurant' %}
+class {{ model.name }}Serializer(serializers.HyperlinkedModelSerializer):
+    avg_point = serializers.FloatField()
+
+    class Meta:
+        model = {{ model.name }}
+        fields = {{ model.name }}._fields() + ('avg_point',)
+        read_only_fields = ('avg_point',)
+{% else %}
 class {{ model.name }}Serializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = {{ model.name }}
         fields = {{ model.name }}._fields()
+{% endif %}
 {% endfor %}

@@ -38,6 +38,14 @@ class Restaurant(_UtilMixin, models.Model):
     latitude = models.FloatField(blank=True, null=True)
     icon = models.CharField(max_length=255, blank=True, null=True)
 
+    @property
+    def avg_point(self):
+        qs = self.rate_set.all()
+        n = len(qs)
+        if not n :
+            return 0
+        return sum(rate.point for rate in qs) / n
+
 
 class Rate(_UtilMixin, models.Model):
     restaurant = models.ForeignKey('Restaurant')

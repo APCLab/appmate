@@ -18,4 +18,14 @@ class {{ model.name }}(_UtilMixin, models.Model):
     {% for field in model.fields %}
     {{ field.name }} = models.{{ field.type }}({{ field.args | default(field_arg[field.type]) }})
     {% endfor %}
+    {% if model.name == 'Restaurant' %}
+
+    @property
+    def avg_point(self):
+        qs = self.rate_set.all()
+        n = len(qs)
+        if not n :
+            return 0
+        return sum(rate.point for rate in qs) / n
+    {% endif %}
 {% endfor %}
