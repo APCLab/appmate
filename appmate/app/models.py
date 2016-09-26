@@ -34,14 +34,18 @@ class Vehicle(_UtilMixin, models.Model):
 class QueueList(_UtilMixin, models.Model):
     model = models.IntegerField(blank=True, null=True)
     time = models.DateTimeField(null=True)
+    saddress = models.TextField(blank=True, null=True)
     slongitude = models.FloatField(blank=True, null=True)
     slatitude = models.FloatField(blank=True, null=True)
     price = models.FloatField(blank=True, null=True)
+    daddress = models.TextField(blank=True, null=True)
     dlongitude = models.FloatField(blank=True, null=True)
     dlatitude = models.FloatField(blank=True, null=True)
     time = models.DateTimeField(blank=True, null=True, auto_now_add=True)
     customer = models.ForeignKey('Customer')
+    driver = models.ForeignKey('Driver', null=True, blank=True)
     state = models.IntegerField(blank=True, null=True)
+    arrival_time = models.DateTimeField(null=True, blank=True)
 
 
 class Evaluation(_UtilMixin, models.Model):

@@ -51,12 +51,16 @@ models:
           - name: time
             type: DateTimeField
             args: "null=True"
+          - name: saddress
+            type: TextField
           - name: slongitude
             type: FloatField
           - name: slatitude
             type: FloatField
           - name: price
             type: FloatField
+          - name: daddress
+            type: TextField
           - name: dlongitude
             type: FloatField
           - name: dlatitude
@@ -66,8 +70,14 @@ models:
           - name: customer
             type: ForeignKey
             args: "'Customer'"
+          - name: driver
+            type: ForeignKey
+            args: "'Driver', null=True, blank=True"
           - name: state
             type: IntegerField
+          - name: arrival_time
+            type: DateTimeField
+            args: "null=True, blank=True"
 
     - name: Evaluation
       endpoint: evaluation
