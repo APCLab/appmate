@@ -101,7 +101,7 @@ models:
           - name: time
             type: DateTimeField
           - name: seat_number
-            type: IntegerField
+            type: CharField
           - name: menu
             type: ForeignKey
             args: "'Menu'"
@@ -115,7 +115,7 @@ models:
             type: ForeignKey
             args: "'User'"
           - name: seat_number
-            type: IntegerField
+            type: CharField
           - name: time
             type: DateTimeField
             args: "auto_now=True"

@@ -69,14 +69,14 @@ class Order(_UtilMixin, models.Model):
     restaurant = models.ForeignKey('Restaurant')
     user = models.ForeignKey('User')
     time = models.DateTimeField(blank=True, null=True, auto_now_add=True)
-    seat_number = models.IntegerField(blank=True, null=True)
+    seat_number = models.CharField(max_length=255, blank=True, null=True)
     menu = models.ForeignKey('Menu')
     count = models.IntegerField(blank=True, null=True)
 
 
 class Reservation(_UtilMixin, models.Model):
     user = models.ForeignKey('User')
-    seat_number = models.IntegerField(blank=True, null=True)
+    seat_number = models.CharField(max_length=255, blank=True, null=True)
     time = models.DateTimeField(auto_now=True)
     res_time = models.DateTimeField()
     available = models.BooleanField(blank=True)
