@@ -14,6 +14,7 @@ __all__ = (
     'OrderViewSet',
     'ReservationViewSet',
     'FavoriteViewSet',
+    'SensorViewSet',
 )
 
 
@@ -64,3 +65,10 @@ class FavoriteViewSet(viewsets.ModelViewSet):
     serializer_class = FavoriteSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filter_class = FavoriteFilter
+
+
+class SensorViewSet(viewsets.ModelViewSet):
+    queryset = Sensor.objects.all()
+    serializer_class = SensorSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = SensorFilter

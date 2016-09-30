@@ -135,3 +135,8 @@ models:
             type: ForeignKey
             args: "'Restaurant'"
 
+    - name: Sensor
+      endpoint: sensor
+      fields:
+          - name: check
+            type: IntegerField

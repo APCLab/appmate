@@ -12,6 +12,7 @@ __all__ = (
     'OrderFilter',
     'ReservationFilter',
     'FavoriteFilter',
+    'SensorFilter',
 )
 
 
@@ -76,4 +77,10 @@ class ReservationFilter(FilterSet):
 class FavoriteFilter(FilterSet):
     class Meta:
         model = Favorite
+        fields = fields_filter(model, model._fields())
+
+
+class SensorFilter(FilterSet):
+    class Meta:
+        model = Sensor
         fields = fields_filter(model, model._fields())

@@ -10,6 +10,7 @@ __all__ = (
     'OrderSerializer',
     'ReservationSerializer',
     'FavoriteSerializer',
+    'SensorSerializer',
 )
 
 
@@ -56,3 +57,9 @@ class FavoriteSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Favorite
         fields = Favorite._fields()
+
+
+class SensorSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Sensor
+        fields = Sensor._fields()

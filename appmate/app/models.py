@@ -8,6 +8,7 @@ __all__ = (
     'Order',
     'Reservation',
     'Favorite',
+    'Sensor',
 )
 
 
@@ -85,3 +86,7 @@ class Reservation(_UtilMixin, models.Model):
 class Favorite(_UtilMixin, models.Model):
     user = models.ForeignKey('User')
     restaurant = models.ForeignKey('Restaurant')
+
+
+class Sensor(_UtilMixin, models.Model):
+    check = models.IntegerField(blank=True, null=True)
