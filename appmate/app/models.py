@@ -18,6 +18,9 @@ class _UtilMixin(object):
     def _fields(cls):
         return tuple(f.name for f in cls._meta.fields)
 
+    def __str__(self):
+        return 'id: {}'.format(self.id)
+
 
 class User(_UtilMixin, models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
