@@ -57,6 +57,10 @@ class Rate(_UtilMixin, models.Model):
     priv_comment = models.TextField(blank=True, null=True)
     time = models.DateTimeField(blank=True, null=True, auto_now_add=True)
 
+    @property
+    def thumbup(self):
+        return self.thumbup_set.filter(check=True).count()
+
 
 class Thumbup(_UtilMixin, models.Model):
     user = models.ForeignKey('User')

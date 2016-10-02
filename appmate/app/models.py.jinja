@@ -27,5 +27,10 @@ class {{ model.name }}(_UtilMixin, models.Model):
         if not n :
             return 0
         return sum(rate.point for rate in qs) / n
+    {% elif model.name == 'Rate' %}
+
+    @property
+    def thumbup(self):
+        return self.thumbup_set.filter(check=True).count()
     {% endif %}
 {% endfor %}

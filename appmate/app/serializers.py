@@ -31,9 +31,12 @@ class RestaurantSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class RateSerializer(serializers.HyperlinkedModelSerializer):
+    thumbup = serializers.IntegerField()
+
     class Meta:
         model = Rate
-        fields = Rate._fields()
+        fields = Rate._fields() + ('thumbup',)
+        read_only_fields = ('thumbup',)
 
 
 class ThumbupSerializer(serializers.HyperlinkedModelSerializer):

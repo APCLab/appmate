@@ -18,6 +18,14 @@ class {{ model.name }}Serializer(serializers.HyperlinkedModelSerializer):
         model = {{ model.name }}
         fields = {{ model.name }}._fields() + ('avg_point',)
         read_only_fields = ('avg_point',)
+{% elif model.name == 'Rate' %}
+class {{ model.name }}Serializer(serializers.HyperlinkedModelSerializer):
+    thumbup = serializers.IntegerField()
+
+    class Meta:
+        model = {{ model.name }}
+        fields = {{ model.name }}._fields() + ('thumbup',)
+        read_only_fields = ('thumbup',)
 {% else %}
 class {{ model.name }}Serializer(serializers.HyperlinkedModelSerializer):
     class Meta:
