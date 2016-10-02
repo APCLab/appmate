@@ -6,6 +6,7 @@ __all__ = (
     'UserSerializer',
     'RestaurantSerializer',
     'RateSerializer',
+    'ThumbupSerializer',
     'MenuSerializer',
     'OrderSerializer',
     'ReservationSerializer',
@@ -33,6 +34,12 @@ class RateSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Rate
         fields = Rate._fields()
+
+
+class ThumbupSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Thumbup
+        fields = Thumbup._fields()
 
 
 class MenuSerializer(serializers.HyperlinkedModelSerializer):

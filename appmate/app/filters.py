@@ -8,6 +8,7 @@ __all__ = (
     'UserFilter',
     'RestaurantFilter',
     'RateFilter',
+    'ThumbupFilter',
     'MenuFilter',
     'OrderFilter',
     'ReservationFilter',
@@ -53,6 +54,12 @@ class RestaurantFilter(FilterSet):
 class RateFilter(FilterSet):
     class Meta:
         model = Rate
+        fields = fields_filter(model, model._fields())
+
+
+class ThumbupFilter(FilterSet):
+    class Meta:
+        model = Thumbup
         fields = fields_filter(model, model._fields())
 
 

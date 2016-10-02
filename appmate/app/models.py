@@ -4,6 +4,7 @@ __all__ = (
     'User',
     'Restaurant',
     'Rate',
+    'Thumbup',
     'Menu',
     'Order',
     'Reservation',
@@ -55,7 +56,12 @@ class Rate(_UtilMixin, models.Model):
     pub_comment = models.TextField(blank=True, null=True)
     priv_comment = models.TextField(blank=True, null=True)
     time = models.DateTimeField(blank=True, null=True, auto_now_add=True)
-    thumbup = models.IntegerField(blank=True, null=True)
+
+
+class Thumbup(_UtilMixin, models.Model):
+    user = models.ForeignKey('User')
+    rate = models.ForeignKey('Rate')
+    check = models.BooleanField(blank=True)
 
 
 class Menu(_UtilMixin, models.Model):

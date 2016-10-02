@@ -18,6 +18,11 @@ class RateAdmin(admin.ModelAdmin):
     list_display = Rate._fields()
 
 
+@admin.register(Thumbup)
+class ThumbupAdmin(admin.ModelAdmin):
+    list_display = Thumbup._fields()
+
+
 @admin.register(Menu)
 class MenuAdmin(admin.ModelAdmin):
     list_display = Menu._fields()

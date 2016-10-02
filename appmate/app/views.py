@@ -10,6 +10,7 @@ __all__ = (
     'UserViewSet',
     'RestaurantViewSet',
     'RateViewSet',
+    'ThumbupViewSet',
     'MenuViewSet',
     'OrderViewSet',
     'ReservationViewSet',
@@ -37,6 +38,13 @@ class RateViewSet(viewsets.ModelViewSet):
     serializer_class = RateSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filter_class = RateFilter
+
+
+class ThumbupViewSet(viewsets.ModelViewSet):
+    queryset = Thumbup.objects.all()
+    serializer_class = ThumbupSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = ThumbupFilter
 
 
 class MenuViewSet(viewsets.ModelViewSet):

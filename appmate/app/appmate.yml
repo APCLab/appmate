@@ -71,8 +71,18 @@ models:
             type: TextField
           - name: time
             type: DateTimeField
-          - name: thumbup
-            type: IntegerField
+
+    - name: Thumbup
+      endpoint: thumbup
+      fields:
+          - name: user
+            type: ForeignKey
+            args: "'User'"
+          - name: rate
+            type: ForeignKey
+            args: "'Rate'"
+          - name: check
+            type: BooleanField
 
     - name: Menu
       endpoint: menu
