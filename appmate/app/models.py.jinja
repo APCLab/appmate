@@ -11,6 +11,9 @@ class _UtilMixin(object):
     @classmethod
     def _fields(cls):
         return tuple(f.name for f in cls._meta.fields)
+
+    def __str__(self):
+        return 'id: {}'.format(self.id)
 {% for model in models %}
 
 
