@@ -22,21 +22,19 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class RestaurantSerializer(serializers.HyperlinkedModelSerializer):
-    avg_point = serializers.FloatField()
+    avg_point = serializers.FloatField(read_only=True)
 
     class Meta:
         model = Restaurant
         fields = Restaurant._fields() + ('avg_point',)
-        read_only_fields = ('avg_point',)
 
 
 class RateSerializer(serializers.HyperlinkedModelSerializer):
-    thumbup = serializers.IntegerField()
+    thumbup = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Rate
         fields = Rate._fields() + ('thumbup',)
-        read_only_fields = ('thumbup',)
 
 
 class ThumbupSerializer(serializers.HyperlinkedModelSerializer):
