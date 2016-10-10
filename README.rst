@@ -26,16 +26,6 @@ Create DataBase
     python manage.py createsuperuser
 
 
-Activate Model
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-::
-
-    # edit the app/models.py
-    python manage.py makemigrations app
-    python manage.py migrate app
-
-
 Run the Development Server
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
