@@ -35,6 +35,27 @@ class EvaluationSerializer(serializers.HyperlinkedModelSerializer):
         model = Evaluation
         fields = Evaluation._fields()
 
+    def create(self, validated_data):
+        evaluation = super().create(validated_data)
+
+        ql = evaluation.queue_list
+        customer = evaluation.queue_list.customer
+
+        data = {
+            'score': evaluation.score,
+            'saddress': ql.saddress,
+            'slongitude': ql.slongitude,
+            'slatitude': ql.slatitude,
+            'price': ql.price,
+            'daddress': ql.daddress,
+            'dlongitude': ql.dlongitude,
+            'dlatitude': ql.dlatitude,
+            'driver': ql.driver.imei
+        }
+        customer.store_to_block(data)
+
+        return evaluation
+
 
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     b_account = serializers.JSONField(read_only=True)

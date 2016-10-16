@@ -134,7 +134,7 @@ class Customer(_UtilMixin, models.Model):
         '''
         Create a transaction with ``data`` as payload.
 
-        We always send 100000000 satoshi.
+        We always send 0.2 COIN.
 
         :type data: str or dict
 
