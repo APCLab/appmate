@@ -14,10 +14,12 @@ class {{ model.name }}Serializer(serializers.HyperlinkedModelSerializer):
     {% if model.name == 'Customer' %}
     b_account = serializers.JSONField(read_only=True)
     b_utxo = serializers.JSONField(read_only=True)
+    b_balance = serializers.FloatField(read_only=True)
 
     class Meta:
         model = {{ model.name }}
-        fields = {{ model.name }}._fields() + ('b_account', 'b_utxo')
+        fields = {{ model.name }}._fields() + (
+            'b_account', 'b_utxo', 'b_balance')
     {% else %}
     class Meta:
         model = {{ model.name }}

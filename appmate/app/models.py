@@ -105,6 +105,23 @@ class Customer(_UtilMixin, models.Model):
             return None
         return ret
 
+    @property
+    def b_balance(self):
+        '''
+        Get the account balance
+        '''
+        addr = self.b_account[0]  # get or create
+
+        try:
+            rpc = Proxy(settings.BITCOIN_API)
+            balance = rpc.getbalance(self.imei, 0)
+            if balance < 5000000000.0:
+                rpc._call('generatetoaddress', 1, addr)
+            balance = rpc.getbalance(self.imei, 0)
+        except:
+            return None
+        return balance
+
 
 class Driver(_UtilMixin, models.Model):
     imei = models.CharField(max_length=255, blank=True, null=True)
