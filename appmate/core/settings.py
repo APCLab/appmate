@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'rest_framework',
+    'browser',  # blockchain browser
 ]
 
 MIDDLEWARE = [
