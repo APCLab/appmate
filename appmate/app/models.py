@@ -1,4 +1,7 @@
+from django.conf import settings
 from django.db import models
+
+from bitcoin.rpc import Proxy
 
 __all__ = (
     'Track',
@@ -64,6 +67,43 @@ class Customer(_UtilMixin, models.Model):
     phone = models.CharField(max_length=255, blank=True, null=True)
     card = models.CharField(max_length=255, blank=True, null=True)
     time = models.DateTimeField(blank=True, null=True, auto_now_add=True)
+
+    @property
+    def b_account(self):
+        '''
+        Bitcoin Account Address(es)
+
+        This address is used for receiving payment.
+        The account name is imei.
+        '''
+        try:
+            rpc = Proxy(settings.BITCOIN_API)
+            rpc.getaccountaddress(self.imei)  # create if not exists
+
+            ret = rpc._call('getaddressesbyaccount', self.imei)
+        except:
+            return None
+        return ret
+
+    @property
+    def b_utxo(self):
+        '''
+        List of bitcoin UTXOs
+        '''
+        try:
+            rpc = Proxy(settings.BITCOIN_API)
+            utxos = rpc.listunspent(addrs=self.b_account or [])
+            ret = [
+                {
+                    'address': str(utxo['address']),
+                    'amount': utxo['amount'],
+                    'txid': str(utxo['outpoint']).split(':')[0],
+                    'vout': str(utxo['outpoint']).split(':')[-1],
+                } for utxo in utxos if utxo['spendable']
+            ]
+        except:
+            return None
+        return ret
 
 
 class Driver(_UtilMixin, models.Model):

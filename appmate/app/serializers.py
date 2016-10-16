@@ -37,9 +37,12 @@ class EvaluationSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
+    b_account = serializers.JSONField(read_only=True)
+    b_utxo = serializers.JSONField(read_only=True)
+
     class Meta:
         model = Customer
-        fields = Customer._fields()
+        fields = Customer._fields() + ('b_account', 'b_utxo')
 
 
 class DriverSerializer(serializers.HyperlinkedModelSerializer):

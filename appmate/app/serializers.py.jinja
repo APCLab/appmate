@@ -11,7 +11,16 @@ __all__ = (
 
 
 class {{ model.name }}Serializer(serializers.HyperlinkedModelSerializer):
+    {% if model.name == 'Customer' %}
+    b_account = serializers.JSONField(read_only=True)
+    b_utxo = serializers.JSONField(read_only=True)
+
+    class Meta:
+        model = {{ model.name }}
+        fields = {{ model.name }}._fields() + ('b_account', 'b_utxo')
+    {% else %}
     class Meta:
         model = {{ model.name }}
         fields = {{ model.name }}._fields()
+    {% endif %}
 {% endfor %}

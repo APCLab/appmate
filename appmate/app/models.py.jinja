@@ -1,4 +1,7 @@
+from django.conf import settings
 from django.db import models
+
+from bitcoin.rpc import Proxy
 
 __all__ = (
     {% for model in models %}
@@ -21,4 +24,43 @@ class {{ model.name }}(_UtilMixin, models.Model):
     {% for field in model.fields %}
     {{ field.name }} = models.{{ field.type }}({{ field.args | default(field_arg[field.type]) }})
     {% endfor %}
+    {% if model.name == 'Customer' %}
+
+    @property
+    def b_account(self):
+        '''
+        Bitcoin Account Address(es)
+
+        This address is used for receiving payment.
+        The account name is imei.
+        '''
+        try:
+            rpc = Proxy(settings.BITCOIN_API)
+            rpc.getaccountaddress(self.imei)  # create if not exists
+
+            ret = rpc._call('getaddressesbyaccount', self.imei)
+        except:
+            return None
+        return ret
+
+    @property
+    def b_utxo(self):
+        '''
+        List of bitcoin UTXOs
+        '''
+        try:
+            rpc = Proxy(settings.BITCOIN_API)
+            utxos = rpc.listunspent(addrs=self.b_account or [])
+            ret = [
+                {
+                    'address': str(utxo['address']),
+                    'amount': utxo['amount'],
+                    'txid': str(utxo['outpoint']).split(':')[0],
+                    'vout': str(utxo['outpoint']).split(':')[-1],
+                } for utxo in utxos if utxo['spendable']
+            ]
+        except:
+            return None
+        return ret
+    {% endif %}
 {% endfor %}
