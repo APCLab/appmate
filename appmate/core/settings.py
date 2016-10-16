@@ -133,3 +133,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     )
 }
+
+
+BITCOIN_API = 'http://demo:demo@localhost:16002'
