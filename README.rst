@@ -26,14 +26,17 @@ Create DataBase
     python manage.py createsuperuser
 
 
-Activate Model
+Development Setup
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ::
 
-    # edit the app/models.py
-    python manage.py makemigrations app
-    python manage.py migrate app
+    npm install
+
+
+    npm install -g webpack
+    webpack  # or webpack --progress --colors --watch
+
 
 
 Run the Development Server

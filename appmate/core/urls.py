@@ -21,4 +21,5 @@ from app.routers import router as app_router
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(app_router.urls)),
+    url(r'^browser/', include('browser.urls', namespace='browser'))
 ]

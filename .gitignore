@@ -3,3 +3,8 @@ db.sqlite3
 
 share/bitcoin/*
 !share/bitcoin/bitcoin.conf
+
+semantic/*
+semantic.json
+
+node_modules/*
