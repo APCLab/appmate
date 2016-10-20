@@ -5,8 +5,7 @@ from rest_framework.filters import FilterSet
 from app.models import *
 
 __all__ = (
-    'SampleFilter',
-    'DemoFilter',
+    'VoiceLogFilter',
 )
 
 
@@ -32,13 +31,7 @@ def fields_filter(model, fields):
     return ret
 
 
-class SampleFilter(FilterSet):
+class VoiceLogFilter(FilterSet):
     class Meta:
-        model = Sample
-        fields = fields_filter(model, model._fields())
-
-
-class DemoFilter(FilterSet):
-    class Meta:
-        model = Demo
+        model = VoiceLog
         fields = fields_filter(model, model._fields())
