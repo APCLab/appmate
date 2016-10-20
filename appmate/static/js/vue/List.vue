@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    h2 Recent Blocks
+    h2 MIXchain Recent Blocks
     table.ui.celled.table
       thead
         tr
@@ -9,7 +9,10 @@
           th Tx Count
           th Timestamp
       tbody
-        tr(v-for="block in blocks")
+        tr(
+          v-for="block in blocks"
+          v-bind:class="{'highlight': !!(block.tx.length >= 2)}"
+        )
           td {{ block.height }}
           td
             router-link(
@@ -58,4 +61,7 @@ export default {
 </script>
 
 <style scoped>
+tr.highlight {
+  background-color: #fef7aa;
+}
 </style>
