@@ -1,0 +1,12 @@
+- extends 'base.jade'
+
+- load static
+
+- block title
+| Index
+- endblock title
+
+- block body
+div
+  script(src="{% static 'js/build.js' %}")
+- endblock body
