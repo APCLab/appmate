@@ -26,6 +26,19 @@ Create DataBase
     python manage.py createsuperuser
 
 
+Development Setup
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+::
+
+    npm install
+
+
+    npm install -g webpack
+    webpack  # or webpack --progress --colors --watch
+
+
+
 Run the Development Server
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
