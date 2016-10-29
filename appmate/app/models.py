@@ -86,6 +86,7 @@ class Order(_UtilMixin, models.Model):
     seat_number = models.CharField(max_length=255, blank=True, null=True)
     menu = models.ForeignKey('Menu')
     count = models.IntegerField(blank=True, null=True)
+    check = models.IntegerField(blank=True, default=0)
 
 
 class Reservation(_UtilMixin, models.Model):

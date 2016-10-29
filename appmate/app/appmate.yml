@@ -117,6 +117,9 @@ models:
             args: "'Menu'"
           - name: count
             type: IntegerField
+          - name: check
+            type: IntegerField
+            args: "blank=True, default=0"
 
     - name: Reservation
       endpoint: reservation
