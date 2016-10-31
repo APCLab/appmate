@@ -72,7 +72,7 @@ class User(_UtilMixin, models.Model):
             return None
         return ret
 
-    def create_tx(self, data=None):
+    def create_tx(self, data, send_to):
         '''
         Create a transaction with ``data`` as payload.
 
@@ -88,7 +88,7 @@ class User(_UtilMixin, models.Model):
         txin_amount = 0.0
         out_addr = None
         utxoes = self.b_utxo
-        while txin_amount <= 0.03:
+        while txin_amount <= 0.53:
             if not utxoes:
                 return False
 
@@ -102,7 +102,8 @@ class User(_UtilMixin, models.Model):
 
         # txout
         txout = {
-            out_addr: round(txin_amount- 0.02, 6),
+            out_addr: round(txin_amount - 0.52, 6),
+            send_to: round(0.5, 6),
         }
         if data:
             if isinstance(data, (dict, list, tuple)):
@@ -121,14 +122,15 @@ class User(_UtilMixin, models.Model):
             return False
         return ret
 
-    def store_to_block(self, data):
+    def store_to_block(self, data, send_to):
         '''
         Create and send the transaction
 
         :type data: str or dict
+        :type send_to: User object
         :return: the tx id
         '''
-        tx = self.create_tx(data)
+        tx = self.create_tx(data, send_to.b_account[0])
         if not tx:
             return False
 

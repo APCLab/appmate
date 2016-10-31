@@ -17,6 +17,32 @@ class {{ model.name }}Serializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = {{ model.name }}
         fields = {{ model.name }}._fields() + ('b_account',)
+{% elif model.name == 'Ticket' %}
+class {{ model.name }}Serializer(serializers.HyperlinkedModelSerializer):
+    b_account = serializers.JSONField(read_only=True)
+
+    class Meta:
+        model = {{ model.name }}
+        fields = {{ model.name }}._fields() + ('b_account',)
+
+    def create(self, validated_data):
+        ticket = super().create(validated_data)
+
+        concert = ticket.concert_info
+        sender = ticket.prev.user if ticket.prev else User.objects.get(
+            iemi='master')
+        data = {
+            'concert': {
+                'name': concert.name,
+                'date': str(concert.date.astimezone(tz=None)),
+                'location': concert.location,
+            },
+            'token': ticket.token,
+            'region': ticket.region,
+            'price': ticket.price,
+        }
+        sender.store_to_block(data, ticket.user)
+        return ticket
 {% else %}
 class {{ model.name }}Serializer(serializers.HyperlinkedModelSerializer):
     class Meta:
