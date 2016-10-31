@@ -105,3 +105,7 @@ models:
           - name: user
             type: ForeignKey
             args: "'User'"
+
+          - name: prev
+            type: ForeignKey
+            args: "'Ticket', null=True, blank=True"

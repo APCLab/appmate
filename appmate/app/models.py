@@ -53,3 +53,4 @@ class Ticket(_UtilMixin, models.Model):
     state = models.CharField(max_length=255, blank=True, null=True)
     time = models.DateTimeField(blank=True, null=True, auto_now_add=True)
     user = models.ForeignKey('User')
+    prev = models.ForeignKey('Ticket', null=True, blank=True)
