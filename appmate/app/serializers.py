@@ -11,9 +11,11 @@ __all__ = (
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+    b_account = serializers.JSONField(read_only=True)
+
     class Meta:
         model = User
-        fields = User._fields()
+        fields = User._fields() + ('b_account',)
 
 
 class ConcertInfoSerializer(serializers.HyperlinkedModelSerializer):
