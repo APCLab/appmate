@@ -46,6 +46,10 @@ class RateSerializer(serializers.HyperlinkedModelSerializer):
         data = {
             'point': rate.point,
             'comment': rate.pub_comment,
+            'user': {
+                'id': user.id,
+                'name': user.name,
+            },
             'restaurant': {
                 'name': rest.name,
                 'info': rest.info,
