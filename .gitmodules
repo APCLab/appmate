@@ -1,0 +1,3 @@
+[submodule "appmate/chain_browser"]
+	path = appmate/chain_browser
+	url = https://github.com/APCLab/chain-browser.git
