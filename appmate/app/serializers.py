@@ -38,6 +38,25 @@ class RateSerializer(serializers.HyperlinkedModelSerializer):
         model = Rate
         fields = Rate._fields() + ('thumbup',)
 
+    def create(self, validated_data):
+        rate = super().create(validated_data)
+        rest = rate.restaurant
+        user = rate.user
+
+        data = {
+            'point': rate.point,
+            'comment': rate.pub_comment,
+            'restaurant': {
+                'name': rest.name,
+                'info': rest.info,
+                'type': rest.type,
+                'phone': rest.phone,
+            }
+        }
+        user.store_to_block(data)
+
+        return rate
+
 
 class ThumbupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

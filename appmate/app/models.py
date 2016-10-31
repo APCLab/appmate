@@ -1,6 +1,12 @@
+import json
+import logging
+
+from binascii import hexlify
+
 from django.conf import settings
 from django.db import models
 
+from bitcoin.core import COIN
 from bitcoin.rpc import Proxy
 
 __all__ = (
@@ -45,7 +51,6 @@ class User(_UtilMixin, models.Model):
         try:
             rpc = Proxy(settings.BITCOIN_API)
             if id_ not in rpc._call('listaccounts'):
-                print('ttttttttttttttttttttttttttttttttttttx')
                 rpc.getaccountaddress(id_)  # create if not exists
                 ret = rpc._call('getaddressesbyaccount', id_)
                 rpc._call('generatetoaddress', 10, ret[0])
@@ -55,6 +60,94 @@ class User(_UtilMixin, models.Model):
             print(err)
             return None
         return ret
+
+    @property
+    def b_utxo(self):
+        '''
+        List of bitcoin UTXOs
+        '''
+        try:
+            rpc = Proxy(settings.BITCOIN_API)
+            utxos = rpc.listunspent(addrs=self.b_account or [])
+            ret = [
+                {
+                    'address': str(utxo['address']),
+                    'amount': utxo['amount'] / COIN,
+                    'txid': str(utxo['outpoint']).split(':')[0],
+                    'vout': int(str(utxo['outpoint']).split(':')[-1]),
+                } for utxo in utxos if utxo['spendable']
+            ]
+        except:
+            return None
+        return ret
+
+    def create_tx(self, data=None):
+        '''
+        Create a transaction with ``data`` as payload.
+
+        We always send 0.2 COIN.
+
+        :type data: str or dict
+
+        :return: False if creating failed.
+                 The hex of tx if created.
+        '''
+        # txin
+        txin = []
+        txin_amount = 0.0
+        out_addr = None
+        utxoes = self.b_utxo
+        while txin_amount <= 0.03:
+            if not utxoes:
+                return False
+
+            u = utxoes.pop()
+            txin.append({'txid': u['txid'],
+                         'vout': u['vout']})
+            txin_amount += u['amount']
+
+            if not out_addr:
+                out_addr = u['address']
+
+        # txout
+        txout = {
+            out_addr: round(txin_amount- 0.02, 6),
+        }
+        if data:
+            if isinstance(data, (dict, list, tuple)):
+                data = json.dumps(data)
+            txout['data'] = hexlify(data.encode()).decode()
+
+        try:
+            rpc = Proxy(settings.BITCOIN_API)
+            raw_tx = rpc._call('createrawtransaction', txin, txout)
+            ret = rpc._call('signrawtransaction', raw_tx)['hex']
+        except Exception as err:
+            logging.error(err)
+            logging.error('txin_amount = %s', txin_amount)
+            logging.error('txin %s', txin)
+            logging.error('txout %s', txout)
+            return False
+        return ret
+
+    def store_to_block(self, data):
+        '''
+        Create and send the transaction
+
+        :type data: str or dict
+        :return: the tx id
+        '''
+        tx = self.create_tx(data)
+        if not tx:
+            return False
+
+        try:
+            rpc = Proxy(settings.BITCOIN_API)
+            txid = rpc._call('sendrawtransaction', tx)
+        except Exception as err:
+            logging.error(err)
+            return False
+        return txid
 
 
 class Restaurant(_UtilMixin, models.Model):
