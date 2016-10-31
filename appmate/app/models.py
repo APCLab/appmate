@@ -1,4 +1,7 @@
+from django.conf import settings
 from django.db import models
+
+from bitcoin.rpc import Proxy
 
 __all__ = (
     'User',
@@ -29,6 +32,29 @@ class User(_UtilMixin, models.Model):
     bonus = models.IntegerField(blank=True, null=True)
     credit = models.FloatField(blank=True, null=True)
     icon = models.CharField(max_length=255, blank=True, null=True)
+
+    @property
+    def b_account(self):
+        '''
+        Bitcoin Account Address(es)
+
+        This address is used for receiving payment.
+        The account name is imei.
+        '''
+        id_ = str(self.id)
+        try:
+            rpc = Proxy(settings.BITCOIN_API)
+            if id_ not in rpc._call('listaccounts'):
+                print('ttttttttttttttttttttttttttttttttttttx')
+                rpc.getaccountaddress(id_)  # create if not exists
+                ret = rpc._call('getaddressesbyaccount', id_)
+                rpc._call('generatetoaddress', 10, ret[0])
+
+            ret = rpc._call('getaddressesbyaccount', id_)
+        except Exception as err:
+            print(err)
+            return None
+        return ret
 
 
 class Restaurant(_UtilMixin, models.Model):

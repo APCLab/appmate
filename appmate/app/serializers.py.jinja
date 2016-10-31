@@ -24,6 +24,13 @@ class {{ model.name }}Serializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = {{ model.name }}
         fields = {{ model.name }}._fields() + ('thumbup',)
+{% elif model.name == 'User' %}
+class {{ model.name }}Serializer(serializers.HyperlinkedModelSerializer):
+    b_account = serializers.JSONField(read_only=True)
+
+    class Meta:
+        model = {{ model.name }}
+        fields = {{ model.name }}._fields() + ('b_account',)
 {% else %}
 class {{ model.name }}Serializer(serializers.HyperlinkedModelSerializer):
     class Meta:

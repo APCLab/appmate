@@ -1,4 +1,7 @@
+from django.conf import settings
 from django.db import models
+
+from bitcoin.rpc import Proxy
 
 __all__ = (
     {% for model in models %}
@@ -35,5 +38,28 @@ class {{ model.name }}(_UtilMixin, models.Model):
     @property
     def thumbup(self):
         return self.thumbup_set.filter(check=True).count()
+    {% elif model.name == 'User' %}
+
+    @property
+    def b_account(self):
+        '''
+        Bitcoin Account Address(es)
+
+        This address is used for receiving payment.
+        The account name is imei.
+        '''
+        id_ = str(self.id)
+        try:
+            rpc = Proxy(settings.BITCOIN_API)
+            if id_ not in rpc._call('listaccounts'):
+                rpc.getaccountaddress(id_)  # create if not exists
+                ret = rpc._call('getaddressesbyaccount', id_)
+                rpc._call('generatetoaddress', 10, ret[0])
+
+            ret = rpc._call('getaddressesbyaccount', id_)
+        except Exception as err:
+            print(err)
+            return None
+        return ret
     {% endif %}
 {% endfor %}
