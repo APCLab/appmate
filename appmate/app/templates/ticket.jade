@@ -1,0 +1,100 @@
+- load static
+!!! 5
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    link(rel="stylesheet" href="{% static 'chain_browser/css/semantic.min.css' %}")
+    link(rel="stylesheet" href="{% static 'css/ticket.css' %}")
+    script(src="{% static 'chain_browser/js/jq.min.js' %}")
+    script(src="{% static 'chain_browser/js/semantic.min.js' %}")
+    title
+      | Ticket Manager
+  body
+    .ui.container
+      .ui.menu.inverted
+        .active.purple.item Home
+
+      img(src="{% static 'concert.jpg' %}"
+          id="banner")
+
+      .ui.cards
+        each idx, info in c_info
+          .card
+            .content
+              .header= info.name
+              // .meta= info.date
+
+            if idx == 0
+              .img
+                img(
+                  src="{% static 'img01.jpg' %}"
+                  class="concert-poster"
+                )
+            elif idx == 1
+              .img
+                img(
+                  src="{% static 'img02.jpg' %}"
+                  class="concert-poster"
+                )
+            elif idx == 2
+              .img
+                img(
+                  src="{% static 'img03.jpg' %}"
+                  class="concert-poster"
+                )
+            elif idx == 3
+              .img
+                img(
+                  src="{% static 'img04.jpg' %}"
+                  class="concert-poster"
+                )
+            elif idx == 4
+              .img
+                img(
+                  src="{% static 'img05.jpg' %}"
+                  class="concert-poster"
+                )
+
+            .content
+              if idx == 0
+                .description
+                  i.icon.user
+                  | 5276
+                  // br
+                  // i.ticket.icon
+              elif idx == 1
+                .description
+                  i.icon.user
+                  | 6128
+              elif idx == 2
+                .description
+                  i.icon.user
+                  | 3638
+              elif idx == 3
+                .description
+                  i.icon.user
+                  | 3638
+              elif idx == 4
+                .description
+                  i.icon.user
+                  | 3638
+              else
+                .description test
+
+              i.icon.marker
+              span= info.location
+            .extra.content
+              if idx != cid
+                a.ui.basic.green.button(
+                  href="/t/commit/?cid={{ idx }}"
+                ) Commit
+              else
+                a.ui.basic.button(disabled) Complete
+
+      if msg
+        .ui.icon.positive.message#msg(
+          style="position: fixed; bottom: 0; left: 0; height: 50px;"
+        )
+          i.icon.checkmark
+          .content
+            .header= msg

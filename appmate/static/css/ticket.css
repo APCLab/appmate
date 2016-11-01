@@ -1,0 +1,20 @@
+#banner {
+  width: 100%;
+}
+
+.ui.menu {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.ui.menu > .active.item {
+  border-radius: 0;
+}
+
+img.concert-poster {
+  width: 100%;
+}
+
+.ui.cards > .card {
+  width: 32.1%;
+}

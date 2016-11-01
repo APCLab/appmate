@@ -17,9 +17,12 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 from app.routers import router as app_router
+from app.views import ticket_manager, ticket_commit
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(app_router.urls)),
     url(r'^browser/', include('chain_browser.urls', namespace='browser')),
+    url(r'^t/$', ticket_manager, name='ticket'),
+    url(r'^t/commit/$', ticket_commit, name='ticket_commit'),
 ]
