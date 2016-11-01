@@ -12,7 +12,15 @@ html(lang="en")
   body
     .ui.container
       .ui.menu.inverted
-        .active.purple.item Home
+        .active.purple.item
+          i.icon.home 
+          | Home
+        .item
+          i.icon.user
+          | Users
+        .item
+          i.icon.settings
+          | Settings
 
       img(src="{% static 'concert.jpg' %}"
           id="banner")
