@@ -1,9 +1,9 @@
-django~=1.9
-django-suit
-djangorestframework
+django==1.10.1
+django-filter==0.14.0
+django-suit==0.2.21
+djangorestframework==3.4.6
 markdown
-django-filter
 Pillow
 pytz
 yasha
-python-bitcoinlib
+python-bitcoinlib==0.7.0
