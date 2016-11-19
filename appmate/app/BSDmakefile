@@ -1,4 +1,4 @@
 .include "Makefile.common"
 
-.py.jinja.py:
+.py.jinja.py: appmate.yml
 	${YASHA} -o ${.TARGET} ${.IMPSRC}
