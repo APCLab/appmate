@@ -2,9 +2,9 @@ from django.shortcuts import render
 
 from rest_framework import filters, viewsets
 
-from app.filters import *
-from app.models import *
-from app.serializers import *
+from {{ app.name }}.filters import *
+from {{ app.name }}.models import *
+from {{ app.name }}.serializers import *
 
 __all__ = (
     {% for model in models %}

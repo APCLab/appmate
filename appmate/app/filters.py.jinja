@@ -2,7 +2,7 @@ from django.db import models
 
 from rest_framework.filters import FilterSet
 
-from app.models import *
+from {{ app.name }}.models import *
 
 __all__ = (
     {% for model in models %}

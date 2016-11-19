@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from app.models import *
+from {{ app.name }}.models import *
 
 __all__ = (
     {% for model in models %}

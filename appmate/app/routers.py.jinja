@@ -1,6 +1,6 @@
 from rest_framework import routers
 
-from app.views import *
+from {{ app.name }}.views import *
 
 router = routers.DefaultRouter()
 {% for model in models %}
