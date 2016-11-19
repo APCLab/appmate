@@ -1,11 +1,8 @@
+YASHA=	yasha --no-extensions -v appmate.yml
 
-YASHA=	yasha --no-extensions -v appmate.yml 
+.SUFFIXES: .py .py.jinja
 
+.py.jinja.py:
+	${YASHA} -o ${.TARGET} ${.IMPSRC}
 
-all:
-	${YASHA} models.py.jinja
-	${YASHA} admin.py.jinja
-	${YASHA} filters.py.jinja
-	${YASHA} serializers.py.jinja
-	${YASHA} views.py.jinja
-	${YASHA} routers.py.jinja
+all: admin.py apps.py filters.py models.py routers.py serializers.py views.py
