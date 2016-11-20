@@ -1,6 +1,8 @@
 from django.shortcuts import render
 
-from rest_framework import filters, viewsets
+from django_filters.rest_framework import DjangoFilterBackend
+
+from rest_framework import viewsets
 
 from {{ app.name }}.filters import *
 from {{ app.name }}.models import *
@@ -17,6 +19,6 @@ __all__ = (
 class {{ model.name }}ViewSet(viewsets.ModelViewSet):
     queryset = {{ model.name }}.objects.all()
     serializer_class = {{ model.name }}Serializer
-    filter_backends = (filters.DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend,)
     filter_class = {{ model.name }}Filter
 {% endfor %}

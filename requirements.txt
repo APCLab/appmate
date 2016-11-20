@@ -6,3 +6,4 @@ django-filter
 Pillow
 pytz
 yasha
+django-crispy-forms
