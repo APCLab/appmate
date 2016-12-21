@@ -1,8 +1,8 @@
 django~=1.9
 django-suit
-djangorestframework
+djangorestframework~=3.5
 markdown
-django-filter
+django-filter~=1.0
 Pillow
 pytz
 yasha
