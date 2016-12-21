@@ -23,6 +23,4 @@ from app.routers import router as app_router
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(app_router.urls)),
-] \
-+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
-+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
