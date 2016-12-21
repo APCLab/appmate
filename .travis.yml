@@ -11,7 +11,8 @@ install:
   - pip install -U -r requirements.txt
 
 script:
-  - make -C appmate/app
+  - make -C appmate/app clean
+  - make -C appmate/app all
 
 notifications:
   slack:

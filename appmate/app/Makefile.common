@@ -2,5 +2,15 @@ YASHA=	yasha --no-extensions -v appmate.yml
 
 .SUFFIXES: .py .py.jinja
 
+GEN_FILE=	admin.py \
+		apps.py \
+		filters.py \
+		models.py \
+		routers.py \
+		serializers.py \
+		views.py
 
-all: admin.py apps.py filters.py models.py routers.py serializers.py views.py
+all: ${GEN_FILE}
+
+clean:
+	rm -v ${GEN_FILE}
