@@ -1,0 +1,21 @@
+language: python
+
+python:
+  - '3.4'
+  - '3.5'
+  - nightly
+
+install:
+  - pip install -U pip
+  - pip install -U -r requirements.txt
+
+script:
+  - make -C appmate/app
+
+notifications:
+  slack:
+    secure: swsiUak+CXsUK47u6NKlFu1hc9mCmEJrI356YPKJkEkHtcECxoJVhO6Vn4rflFVA/urZcyxOmAYkHR10B/b1k/tAKoNY9X4AMStq+nJfpMYMTRZoEM9kK4lH7NI2QGYxU9iqs5GLaG3TzpzBMVQ2TFjRMFmncaAlnrJl/SqQ6Au2df//EiTI0cPwK1BTJgcc2ECC9QnDzPs08avloWktkBAHgQSw3WtSDRZU9T4f8MTa1P5SRrIdUYmPQ2P1Ot5AtEmfC4p/2e1yMdDqOkrHNyaGVKzlIMimiYMyduqoBFhswedVnCdIrktQjjE/dzErgvYrqLnAShoGyer2awAeSqBIHrbCT0meCN/l+VJSjeI7YNOsECbD3wcwXrs6GKjB1PUVNPJ6k+9GIekUaqD/HK9E3HteeO+p5OUXxQSz1FeskCV/Mu2dDbVQb3CpJ86y/jh8LzNoXZ/LLVUjBkg79eWPg6iDoeyFeMdDPNHngZv/V8Pop3WwQ7gyDvdeYm9r3eXF3zH7YA65NZO/x005zqHUhbsBrEb0SqFAieM3YxhUMqrOcWuuSsmwPvwwYVSnXZKQbCxwgT7LMAD2dG4bpuUbRM8Rb1dngJ3ifyiD7lpx06ybL/tvOt4D1LyU4QqL4OaqMzeDCWzrqvK2UkxeHXbfrUvA83xh3rxFukU2UkI=
+
+matrix:
+  allow_failures:
+    - python: nightly
