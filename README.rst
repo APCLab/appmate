@@ -1,6 +1,8 @@
 AppMate
 ===============================================================================
 
+.. image:: https://travis-ci.org/APCLab/appmate.svg?branch=master
+
 Appmate is your friend.
 
 Python support: 3.4 and 3.5
