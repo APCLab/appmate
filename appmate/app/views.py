@@ -9,20 +9,12 @@ from app.models import *
 from app.serializers import *
 
 __all__ = (
-    'SampleViewSet',
-    'DemoViewSet',
+    'IotViewSet',
 )
 
 
-class SampleViewSet(viewsets.ModelViewSet):
-    queryset = Sample.objects.all()
-    serializer_class = SampleSerializer
+class IotViewSet(viewsets.ModelViewSet):
+    queryset = Iot.objects.all()
+    serializer_class = IotSerializer
     filter_backends = (DjangoFilterBackend,)
-    filter_class = SampleFilter
-
-
-class DemoViewSet(viewsets.ModelViewSet):
-    queryset = Demo.objects.all()
-    serializer_class = DemoSerializer
-    filter_backends = (DjangoFilterBackend,)
-    filter_class = DemoFilter
+    filter_class = IotFilter

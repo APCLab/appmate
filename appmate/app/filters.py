@@ -5,8 +5,7 @@ from django_filters.rest_framework import FilterSet
 from app.models import *
 
 __all__ = (
-    'SampleFilter',
-    'DemoFilter',
+    'IotFilter',
 )
 
 
@@ -32,13 +31,7 @@ def fields_filter(model, fields):
     return ret
 
 
-class SampleFilter(FilterSet):
+class IotFilter(FilterSet):
     class Meta:
-        model = Sample
-        fields = fields_filter(model, model._fields())
-
-
-class DemoFilter(FilterSet):
-    class Meta:
-        model = Demo
+        model = Iot
         fields = fields_filter(model, model._fields())

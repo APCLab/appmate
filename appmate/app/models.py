@@ -1,8 +1,7 @@
 from django.db import models
 
 __all__ = (
-    'Sample',
-    'Demo',
+    'Iot',
 )
 
 
@@ -15,16 +14,15 @@ class _UtilMixin(object):
         return 'id: {}'.format(self.id)
 
 
-class Sample(_UtilMixin, models.Model):
-    name = models.CharField(max_length=42)
-    msg = models.TextField(blank=True, null=True)
-    date = models.DateField(blank=True, null=True, auto_now_add=True)
-    timestamp = models.DateTimeField(blank=True, null=True, auto_now_add=True)
-    img = models.ImageField(blank=True, null=True)
-    checked = models.BooleanField(blank=True)
-    email = models.EmailField(blank=True, null=True)
-    index = models.IntegerField(blank=True, null=True)
-
-
-class Demo(_UtilMixin, models.Model):
-    name = models.IntegerField(blank=True, null=True)
+class Iot(_UtilMixin, models.Model):
+    hostname = models.CharField(max_length=255)
+    humi = models.FloatField(blank=True, null=True)
+    temp = models.FloatField(blank=True, null=True)
+    light = models.IntegerField(blank=True, null=True)
+    touch = models.TextField(blank=True, null=True)
+    timestamp = models.DateTimeField(blank=True, null=True, auto_now=True)
+    cell1 = models.IntegerField(blank=True, null=True)
+    cell2 = models.IntegerField(blank=True, null=True)
+    cell3 = models.IntegerField(blank=True, null=True)
+    cell4 = models.IntegerField(blank=True, null=True)
+    cell5 = models.IntegerField(blank=True, null=True)
