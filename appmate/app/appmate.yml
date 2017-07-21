@@ -36,12 +36,12 @@ models:
             args: "blank=True, null=True, auto_now=True"
 
           - name: cell1
-            type: IntegerField
+            type: TextField
           - name: cell2
-            type: IntegerField
+            type: TextField
           - name: cell3
-            type: IntegerField
+            type: TextField
           - name: cell4
-            type: IntegerField
+            type: TextField
           - name: cell5
-            type: IntegerField
+            type: TextField
