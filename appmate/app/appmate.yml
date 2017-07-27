@@ -45,3 +45,26 @@ models:
             type: TextField
           - name: cell5
             type: TextField
+
+    - name: Kugi
+      endpoint: kugi
+      fields:
+          - name: longitude
+            type: FloatField
+          - name: latitude
+            type: FloatField
+
+          - name: cell1
+            type: TextField
+          - name: cell2
+            type: TextField
+          - name: cell3
+            type: TextField
+          - name: cell4
+            type: TextField
+          - name: cell5
+            type: TextField
+          - name: cell6
+            type: TextField
+          - name: cell7
+            type: TextField

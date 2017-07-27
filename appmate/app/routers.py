@@ -4,3 +4,4 @@ from app.views import *
 
 router = routers.DefaultRouter()
 router.register(r'iot', IotViewSet)
+router.register(r'kugi', KugiViewSet)

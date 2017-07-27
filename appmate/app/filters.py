@@ -6,6 +6,7 @@ from app.models import *
 
 __all__ = (
     'IotFilter',
+    'KugiFilter',
 )
 
 
@@ -34,4 +35,10 @@ def fields_filter(model, fields):
 class IotFilter(FilterSet):
     class Meta:
         model = Iot
+        fields = fields_filter(model, model._fields())
+
+
+class KugiFilter(FilterSet):
+    class Meta:
+        model = Kugi
         fields = fields_filter(model, model._fields())

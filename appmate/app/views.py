@@ -10,6 +10,7 @@ from app.serializers import *
 
 __all__ = (
     'IotViewSet',
+    'KugiViewSet',
 )
 
 
@@ -18,3 +19,10 @@ class IotViewSet(viewsets.ModelViewSet):
     serializer_class = IotSerializer
     filter_backends = (DjangoFilterBackend,)
     filter_class = IotFilter
+
+
+class KugiViewSet(viewsets.ModelViewSet):
+    queryset = Kugi.objects.all()
+    serializer_class = KugiSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_class = KugiFilter

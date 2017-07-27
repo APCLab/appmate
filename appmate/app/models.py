@@ -2,6 +2,7 @@ from django.db import models
 
 __all__ = (
     'Iot',
+    'Kugi',
 )
 
 
@@ -26,3 +27,15 @@ class Iot(_UtilMixin, models.Model):
     cell3 = models.TextField(blank=True, null=True)
     cell4 = models.TextField(blank=True, null=True)
     cell5 = models.TextField(blank=True, null=True)
+
+
+class Kugi(_UtilMixin, models.Model):
+    longitude = models.FloatField(blank=True, null=True)
+    latitude = models.FloatField(blank=True, null=True)
+    cell1 = models.TextField(blank=True, null=True)
+    cell2 = models.TextField(blank=True, null=True)
+    cell3 = models.TextField(blank=True, null=True)
+    cell4 = models.TextField(blank=True, null=True)
+    cell5 = models.TextField(blank=True, null=True)
+    cell6 = models.TextField(blank=True, null=True)
+    cell7 = models.TextField(blank=True, null=True)
