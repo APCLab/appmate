@@ -21,8 +21,7 @@ models:
       endpoint: iot
       fields:
           - name: hostname
-            type: CharField
-            args: max_length=255
+            type: CharField 
           - name: humi
             type: FloatField
           - name: temp

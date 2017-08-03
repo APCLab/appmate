@@ -16,7 +16,7 @@ class _UtilMixin(object):
 
 
 class Iot(_UtilMixin, models.Model):
-    hostname = models.CharField(max_length=255)
+    hostname = models.CharField(max_length=255, blank=True, null=True)
     humi = models.FloatField(blank=True, null=True)
     temp = models.FloatField(blank=True, null=True)
     light = models.IntegerField(blank=True, null=True)

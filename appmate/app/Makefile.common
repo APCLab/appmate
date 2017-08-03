@@ -1,6 +1,6 @@
 YASHA=	yasha --no-extensions -v appmate.yml
 
-.SUFFIXES: .py .py.jinja
+.SUFFIXES: .py .py.jinja .yml
 
 GEN_FILE=	admin.py \
 		apps.py \
@@ -10,7 +10,7 @@ GEN_FILE=	admin.py \
 		serializers.py \
 		views.py
 
-all: ${GEN_FILE}
+all: appmate.yml ${GEN_FILE}
 
 clean:
 	rm -v ${GEN_FILE}
