@@ -1,9 +1,10 @@
 django~=1.9
 django-suit
-djangorestframework~=3.5
+djangorestframework~=3.6
 markdown
 django-filter~=1.0
 Pillow
 pytz
 yasha~=3.0
 django-crispy-forms
+coreapi~=2.3
