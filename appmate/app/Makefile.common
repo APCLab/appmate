@@ -1,4 +1,4 @@
-YASHA=	yasha --no-extensions -v appmate.yml
+YASHA=	yasha --no-extensions -V appmate.yml
 
 .SUFFIXES: .py .py.jinja
 
