@@ -5,5 +5,5 @@ markdown
 django-filter~=1.0
 Pillow
 pytz
-yasha~=3
+yasha~=3.0
 django-crispy-forms
